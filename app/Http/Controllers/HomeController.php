@@ -11,9 +11,7 @@ use App\Models\packages;
 use App\Models\testimonials;
 use App\Models\config;
 use App\Models\inquiry;
-use App\Models\player;
 use App\Models\logo;
-use App\Models\production_schedule;
 use Illuminate\Support\Str;
 use Session;
 use Helper;
@@ -36,14 +34,6 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function index_view()
-    {
-        $production_schedule = production_schedule::paginate(5);
-        $user = Auth::user();
-        $title = 'Dan TerryBerry - Home';
-        // dd($production_schedule);
-        return view('web.index')->with(compact('production_schedule','user','title'));
-    }
 
 
 
@@ -51,7 +41,6 @@ class HomeController extends Controller
     {
         $orders = orders::where('is_active' ,1)->where('paid_status' ,'Paid')->get();
 
-        // Balance Sheet
         $balance = 0;
         if ($orders) {
             foreach ($orders as $key => $value) {
