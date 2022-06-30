@@ -47,7 +47,7 @@
         <!-- START: Footer-->
         @auth
         <footer class="site-footer">
-            2021 &copy; {{env('APP_NAME')}} Dashboard
+            {{date("Y")}} &copy; {{env('APP_NAME')}} Dashboard
         </footer>
         @endauth
         <!-- END: Footer-->
