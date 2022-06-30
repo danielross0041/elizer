@@ -255,10 +255,13 @@
         description.on( 'change', function( evt ) {
             $("#description").text( evt.editor.getData())
         });
+        var specification = CKEDITOR.replace( 'specification');
+        specification.on( 'change', function( evt ) {
+            $("#specification").text( evt.editor.getData())
+        });
 
     })
     
-    // CKEDITOR.replace( 'description', );
 </script>
 @if($eloquent != '' && $table != null)
 <script id="scriptor" type="text/javascript">
@@ -442,9 +445,7 @@
         $("#image").attr("required",true);
         $("#image").css("display","")
         $('#image').prop('required', true);
-        $('#banner').prop('required', true);
         $("#image-add").css("display","none");
-        $("#banner-add").css("display","none");
         $("#generic-form")[0].reset();
         $("#record_id").attr("value","");
         $("#addevent").modal("show")
