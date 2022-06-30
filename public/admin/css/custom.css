@@ -1,0 +1,1213 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #fff;
+}
+
+main {
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/*main-content*/
+.main-content-custom{
+    padding: 50px 0;
+}
+.main-content-custom .custom-top-bar h3{
+
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0;
+    font-family: Poppins;
+    color: #000;
+
+}
+.main-content-custom .custom-top-bar h6{
+
+    font-weight: 800;
+    font-family: Poppins;
+    font-size: 16px;
+    color: #000;
+
+}
+.main-content-custom .custom-top-bar p{
+
+    font-weight: 400;
+    font-family: Poppins;
+    font-size: 16px;
+    color: #000;
+    margin: 15px 0;
+
+}
+.main-content-custom .custom-top-bar ul li span{
+    font-weight: 600;
+    color: #000;
+    margin: 0 8px 0 0;
+}
+.main-content-custom .custom-top-bar ul li{
+    display: inline-block;
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: 400;
+    color: #777777;
+    margin: 0 20px 0 0;
+}
+.main-content-custom .custom-top-bar .custom-input{
+width: 50%;
+margin: 0 0 0 auto;
+}
+.main-content-custom .custom-top-bar .custom-input select{
+        border: 1px solid #000;
+    border-radius: 0;
+}
+.main-content-custom .custom-top-bar .custom-input label{
+
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Poppins';
+    color: #000;
+    margin: 0 0 7px 0;
+    opacity: .7;
+
+}
+
+.main-content-custom .margin-set-hr{
+    margin: 30px 0;
+}
+.main-content-custom .surface-customization h2{
+
+    font-size: 22px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    margin: 0 0;
+}
+.main-content-custom .surface-customization p{
+color: #000;
+opacity: .7;
+font-size: 16px;
+font-weight: 400;
+font-family: Poppins;
+}
+.main-content-custom .surface-customization .first-surface-start ul{
+border: 1px solid #000;
+border-radius: 0;
+background: #fff;
+    display: flex;
+    align-items: center;
+        justify-content: space-between;
+}
+.main-content-custom .surface-customization .first-surface-start ul li h6{
+    font-size: 18px;
+    font-weight: 700;
+    font-family: Poppins;
+    color: #000;
+    margin: 0;
+}
+.main-content-custom .surface-customization .first-surface-start ul li i.fas.fa-pencil-alt{
+        color: #000;
+    opacity: .7;
+    font-size: 16px;
+    margin: 0 10px 0 0;
+}
+
+.main-content-custom .surface-customization .first-surface-start ul li:last-child{
+    border: none;
+}
+.main-content-custom .surface-customization .first-surface-start ul li:nth-child(2){
+width: 86%;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins';
+    color: #000;
+        display: flex;
+    align-items: center;
+}
+.main-content-custom .surface-customization .first-surface-start ul li:nth-child(2) a{
+    display: block;
+    margin: 0 0 0 auto;
+    font-size: 16px;
+    font-family: 'Poppins';
+    color: #000;
+}
+.main-content-custom .surface-customization .first-surface-start ul li a i{
+    color: #000;
+    opacity: .7;
+    font-size: 16px;
+}
+.main-content-custom .surface-customization .first-surface-start ul li{
+display: inline-block;
+    border-right: 1px solid #000;
+    padding: 10px 20px;
+}
+.main-content-custom .remaining-surface{
+    padding: 65px;
+    border: 3px dotted #000;
+    margin: 30px 0;
+}
+.main-content-custom .remaining-surface button{
+background: #00040;
+    display: block;
+    width: 12%;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    font-weight: 400;
+    font-family: 'Poppins';
+    margin: 0 auto 8px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+}
+.main-content-custom .remaining-surface p{
+        text-align: center;
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    opacity: .7;
+}
+.surface-custom-inner{
+    border: 1px solid #000;
+    border-top: none;
+}
+.surface-custom-inner .img-information{
+        padding: 15px 25px 30px ;
+}
+.surface-custom-inner .img-information h2{
+    font-size: 22px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    margin: 0 0;
+}
+.surface-custom-inner .img-information h6{
+    color: #000;
+    opacity: .7;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Poppins;
+    margin: 0 0 20px;
+}
+.surface-custom-inner .img-information .added-fonts-color .added-body{
+    border: 1px solid #000;
+    padding: 10px 20px;
+        height: 90px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.surface-custom-inner .img-information .added-fonts-color p{
+    color: #000;
+    opacity: .7;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Poppins;
+    margin: 15px 0 0;
+}
+.surface-custom-inner .img-information .added-fonts-color .added-body h4{
+    width: 80%;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins';
+    color: #000;
+    opacity: .7;
+    margin: 0;
+}
+.surface-custom-inner .img-information .added-fonts-color .added-body h5{
+    width: 10%;
+    background: #000;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 2px 5px;
+    margin: 0;
+}
+.surface-custom-inner .img-information .added-fonts-color .added-body a{
+    margin: 0 0 0 39px;display: block;font-weight: 400;color: #000;
+}
+.surface-custom-inner .img-information .added-fonts-color .added-body ul li{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+        margin: 0 0 10px 0;
+}
+.surface-custom-inner .img-information .added-fonts-color button{
+    background: #00040;
+    display: block;
+    width: 45%;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    font-weight: 400;
+    font-family: 'Poppins';
+    margin: 0 auto 8px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+}
+.surface-custom-inner .img-information .custom-input label{
+
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    color: #000;
+    opacity: .7;
+
+}
+.surface-custom-inner .img-information .custom-input p{
+
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    color: #000;
+    opacity: .7;
+
+}
+.surface-custom-inner .img-information .custom-file label{
+
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    margin: 0 0 5px;
+    color: #000;
+    opacity: .7;
+
+}
+.surface-custom-inner .img-information .values-increment-input label{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    margin: 0 0 5px;
+    color: #000;
+    opacity: .7;
+    margin: 0;
+}
+.surface-custom-inner .img-information .custom-file .upload-file-body input{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    height: 203px;
+    opacity: 0;
+}
+.surface-custom-inner .img-information .custom-file .upload-file-body i{
+    font-size: 50px;
+    text-align: center;
+    color: #000;
+}
+.surface-custom-inner .img-information h3 span{
+ color: #000;   
+}
+
+.surface-custom-inner .img-information .custom-file .upload-file-body p{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    color: #000;
+    
+}
+.surface-custom-inner .img-information .custom-file .upload-file-body ul li{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    color: #000;
+    opacity: .7;
+}
+
+.surface-custom-inner .img-information .custom-file .upload-file-body{
+border: 1px solid #000;
+padding: 15px 60px;
+text-align: center;
+position: relative;
+}
+.surface-custom-inner .img-information .custom-input label abbr , .surface-custom-inner .img-information .values-increment-input label abbr{
+    color: #000;
+}
+.surface-custom-inner .img-information .values-increment-input .input-main-div .input-elemnts input{
+        width: 100%;
+    border-radius: 0;
+    margin: 3px 0;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    outline: none;
+    padding: 0 8px;
+}
+.surface-custom-inner .img-information .values-increment-input .input-main-div .input-elemnts span{
+    display: block;
+    text-align: center;
+        font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    color: #000;
+    opacity: .7;
+}
+.surface-custom-inner .img-information .values-increment-input .input-main-div .input-elemnts{
+   width: 40%;
+}
+.surface-custom-inner .img-information .values-increment-input .input-main-div .input-elemnts img{
+        width: 100%;
+    border: 1px solid #000;
+    margin: 0 auto;
+}
+.surface-custom-inner .img-information .values-increment-input .input-main-div{
+    display: flex;align-items: center;justify-content: space-between;
+}
+.surface-custom-inner .img-information  .custom-checkbox h1{
+        font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    color: #000;
+    opacity: .7;
+}
+.surface-custom-inner .img-information .custom-input textarea{
+    width: 100%;
+    border-radius: 0;
+    margin: 3px 0;
+    height: 100px;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    outline: none;
+    padding: 10px 8px;
+}
+.surface-custom-inner .img-information .custom-input input{
+    width: 100%;
+    border-radius: 0;
+    margin: 3px 0;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    outline: none;
+    padding: 0 8px;
+}
+.surface-custom-inner .img-information .custom-input select{
+    width: 100%;
+    border-radius: 0;
+    margin: 3px 0;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    outline: none;
+    padding: 0 8px;
+}
+.surface-custom-inner .img-information .add-customization-text{
+    padding: 65px;
+    border: 3px dotted #000;
+    margin: 30px 0;
+}
+.surface-custom-inner .img-information .add-customization-text p{
+        text-align: center;
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    opacity: .7;
+}
+.surface-custom-inner .img-information .add-customization-text button{
+        background: #00040;
+    display: block;
+    width: 20%;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    font-weight: 400;
+    font-family: 'Poppins';
+    margin: 0 auto 8px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+}
+.surface-custom-inner .img-information .added-fonts-color .added-body ul li .color{
+        width: 25px;
+    height: 25px;
+    background: #000;
+    border: 3px double #fff;
+    margin: 0 5px 0 0;
+}
+.surface-custom-inner .img-information .added-fonts-color .added-body ul li .color-fff{
+        width: 25px;
+    height: 25px;
+    background: #fff;
+    border: 3px double #000;
+    margin: 0 5px 0 0;
+}
+.surface-custom-inner .img-information .added-fonts-color .added-body ul li:first-child h5{
+    opacity: 1;
+}
+.surface-custom-inner .img-information .added-fonts-color .added-body ul li h5{
+opacity: 0;
+}
+/*canvas-img*/
+.size_select ul li input{
+  display: none;
+}
+.size_select ul li{
+    display: inline-block;
+    width: 35%;
+    margin: 0 15px 0 0;
+}
+.size_select ul li:last-child{
+   
+    margin: 0 auto;
+    text-align: center;
+
+}
+.size_select ul li span{
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    color: #000;
+    opacity: .7;
+}
+.size_select ul li input:checked + label{
+  background-color: #fff;
+  font-weight: bold;
+  border: 1px solid #c3002f;
+}
+
+.size_select ul li label{
+border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    justify-content: center;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#first_div {
+            width: 150px;
+            height: 150px;
+            background: green;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+.surface-custom-inner .img-information .img-canvas{
+    background: url(../images/canvas-size.png);
+    background-size: cover;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+        height: 558px;
+        display: flex;align-items: end;justify-content: center;
+}
+.img-canvas canvas{
+    width: 400px;
+    height: 400px;
+    display: table;
+}
+/*color picker*/
+
+/*Box Shadow Remover*/
+.vc-sketch,.vc-chrome{
+    box-shadow: none;
+}
+/*Border Radious Remover*/
+.vc-sketch{
+    border-radius:0;
+}
+/*Background Remover*/
+.vc-chrome-body,.vc-sketch,.vc-chrome{
+    background:transparent;
+}
+
+
+
+
+/*--<>_-_-_-_-_<>--
+Color Pickers
+--<>_-_-_-_-_<>--*/
+
+
+/*Vue Color Picker Core*/
+.vue-color-picker {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+/*Vue Color Picker Container*/
+.vue-color-picker-container {
+    background: #fff;
+}
+/*Vue Color Picker Body*/
+.vc-sketch,.vc-chrome{
+    width:300px;
+}
+/*Vue Color Picker Selector Body*/
+.vc-chrome {
+    height: auto;
+    padding: 10px;
+}
+/*Vue Color Picker Scrubber Bar Height*/
+.vc-sketch-alpha-wrap,.vc-sketch-hue-wrap,.vc-chrome-alpha-wrap,.vc-chrome-hue-wrap {
+    height: 15px;
+}
+/*Vue Color Picker Scrubber Bar Selector Buttons*/
+.vc-chrome-hue-wrap .vc-hue-picker, .vc-chrome-alpha-wrap .vc-alpha-picker{
+    width: 16px;
+    height: 16px;
+}
+/*Vue Color Picker Scrubber Button Selectors*/
+.vc-saturation-circle,.vc-chrome-saturation-wrap .vc-saturation-circle {
+    width: 12px;
+    height: 12px;
+}
+/*Vue Color Picker Scrubber Bar Buttons*/
+.vc-hue-picker,.vc-alpha-picker {
+    width: 16px;
+    height: 16px;
+    border-radius: 6px;
+    transform: translate(-6px, -2px);
+    background-color: rgb(248, 248, 248);
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 37%);
+    z-index: 10;
+}
+/*Vue Color Picker Selector Input*/
+.vc-chrome-fields .vc-input__input {
+    height: 30px;
+    font-size: 16px;
+}
+/*Vue Color Picker Input*/
+.vc-sketch-field .vc-input__input {
+    height: 23px;
+    font-size: 14px;
+}
+/*Vue Color Picker Under Input Text*/
+.vc-chrome-fields .vc-input__label,.vc-sketch-field .vc-input__label{
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #969696;
+}
+/*Vue Color Picker Output Color Example Window*/
+.vc-sketch-color-wrap {
+    width: 50px;
+    height: 35px;
+}
+/*Vue Color Picker Selector Example Window Position*/
+.vc-chrome-color-wrap {
+    position: absolute;
+    width: 36px;
+}
+/*Vue Color Picker Selector Example Window*/
+.vc-chrome-color-wrap .vc-checkerboard,.vc-chrome-active-color {
+    width: 270px;
+    height: 65px;
+}
+/*Vue Color Picker Preset Colors*/
+.vc-sketch-presets-color{
+    width: 20px;
+    height: 20px;
+}
+/*Vue Color Picker Toggle Icon Position*/
+.vc-chrome-toggle-icon {
+    margin-right: -7px;
+    margin-top: 10px;
+}
+/*Vue Color Picker Toggle Icon Size*/
+.vc-chrome-toggle-icon svg {
+    width: 30px !important;
+    height: 30px !important;
+    background: #fff;
+}
+/*Vue Color Picker Toggle Icon Color*/
+.vc-chrome-toggle-icon svg path{
+    fill: #000;
+    stroke: #000;
+}
+  
+/*image-resize*/
+/*fonts-modal*/
+#add-fonts .modal-dialog{
+    max-width: 850px;
+}
+#add-fonts #myTab li button{
+    color: #777777;
+}
+#add-fonts #myTab li .active:hover{
+    border-radius: 0;
+}
+#add-fonts #myTab li .active{
+    border-color: #000;
+    color: #000;
+    border-radius: 0;
+}
+#add-fonts #myTabContent table{
+    margin: 0;
+}
+#add-fonts #myTabContent table tbody tr:nth-child(1) td{
+    font-family: Roboto;
+}
+#add-fonts #myTabContent table tbody tr:nth-child(2) td{
+    font-family: Lato;
+}   
+#add-fonts #myTabContent table tbody tr:nth-child(3) td{
+    font-family: Poppins;
+}
+#add-fonts #myTabContent table tbody tr:nth-child(3) td{
+    font-family: Montserrat;
+}
+#add-fonts #myTabContent table tbody tr td{
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+
+}
+#add-fonts #myTabContent .pagination ul{
+    text-align: center;
+    margin: 0 auto 10px;
+    border: 1px solid #dee2e6;
+    width: 100%;
+    padding: 10px 0;
+    border-top: none;
+}
+#add-fonts #myTabContent .pagination ul li{
+    display: inline-block;
+    margin: 0 10px 0 0;
+    }
+#add-fonts #myTabContent .pagination ul li a{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Poppins;
+    color: #000;
+    opacity: .7;
+}
+#add-fonts #myTabContent .pagination ul li .active{
+    opacity: 1;
+}
+
+#add-fonts  .tags-box h4{
+    font-size: 18px;
+    font-weight: 400;
+    font-family: Poppins;
+    color: #000;
+    margin: 15px 0 10px;
+}
+#add-fonts  .tags-box .tags-box-body ul li i{
+    color: #fff;
+    margin: 0 0 0 5px;
+}
+#add-fonts  .tags-box .tags-box-body ul li{
+    display: inline-block;
+    border: 1px solid #000;
+    background: #000;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: Poppins;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 10px 0 0;
+}
+#add-fonts  .tags-box .tags-box-body {
+     border: 1px solid #dee2e6;
+     padding: 10px 15px;
+}
+#add-fonts  .tags-box p{
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: 400;
+    color: #000;
+    opacity: .7;
+}
+#add-fonts .custom-font-box{
+padding: 20px;
+background: #77777729;
+margin: 10px 0;
+}
+#add-fonts .custom-font-box .font-file{
+    display: none;
+}
+#add-fonts .custom-font-box .font-file .custom-input .inner-file-box-body{
+    position: relative;
+}
+#add-fonts .custom-font-box .font-file .custom-input label{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Poppins;
+    color: #000;
+    opacity: .7;
+    margin: 0 0 7px;   
+}
+#add-fonts .custom-font-box .font-file .custom-input .inner-file-box-body input{
+    position: absolute;opacity: 0;
+}
+#add-fonts .custom-font-box .font-file .custom-input h5 i{
+    margin: 0 5px 0 0;
+}
+#add-fonts .custom-font-box .font-file .font-file-button a{
+    background: #000;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    font-family: Poppins;
+    border: none;
+    height: 50px;
+    line-height: 50px;
+    width: 15%;display: block;text-align: center;margin: 0 15px 0 0;
+}
+#add-fonts .custom-font-box .font-file .font-file-button{
+    display: flex;
+}
+#add-fonts .custom-font-box .font-file .custom-input h5{
+    width: 50%;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Poppins;
+    color: #000;
+    background: #fff;
+    border-radius: 0;
+    display: block;
+    border:2px dotted #000;
+    padding: 0 15px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+#add-fonts .custom-font-box .font-file .custom-input input{
+    width: 50%;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Poppins;
+    color: #000;
+    background: #fff;
+    border-radius: 0;
+    display: block;
+    border:1px solid #000;
+    padding: 0 15px;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+}
+.icon-rotate i {
+transform: rotate(90deg);
+}
+
+#add-fonts .modal-footer button{
+        background: #000;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    font-family: Poppins;
+    border: none;
+    height: 50px;
+    line-height: 50px;
+    width: 15%;
+}
+#add-fonts .custom-font-box p{
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000;
+    margin: 0 0 15px;
+}
+/*add color*/
+#add-color .custom-input{
+    margin:20px 0 0;
+}
+#add-color .custom-input label{
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    opacity: .7;
+}
+#add-color .custom-input input{
+    display: block;
+        display: block;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 0;
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    height: 35px;
+    line-height: 35px;
+    outline: none;
+    padding: 0 10px;
+}
+#add-color .modal-footer button{
+    background: #000;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    font-family: Poppins;
+    border: none;
+    height: 50px;
+    line-height: 50px;
+    width: 55%;
+}
+/*remaining-modal*/
+#remains .modal-dialog{
+    max-width: 60%;
+}
+#remains .modal-header h5{
+font-size: 26px;
+font-weight: 600;
+font-family: Poppins;
+color: #000;
+text-transform: capitalize;
+}
+
+#remains .modal-body .custom-check{
+    position: relative;
+}
+#remains .modal-body .custom-check input{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    display: none;
+}
+/* Create a custom checkbox */
+#remains .modal-body .check-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+/* When the checkbox is checked, add a blue background */
+#remains .modal-body .custom-check input:checked ~ .check-icon {
+  background-color: #fff;
+}
+
+/* Create the check-icon/indicator (hidden when not checked) */
+#remains .modal-body .check-icon:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+#remains .modal-body .custom-check input:checked ~ label{
+    border-color:#000;
+}
+#remains .modal-body .custom-check input:checked ~ label h4{
+    color: #000;
+}
+/* Show the check-icon when checked */
+#remains .modal-body .custom-check input:checked ~ .check-icon:after {
+  display: block;
+}
+
+/* Style the check-icon/indicator */
+#remains .modal-body .custom-check .check-icon:after {
+    right: 15px;
+    top: 0;
+    width: 9px;
+    height: 16px;
+    border: solid #000;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+ #remains .modal-body .custom-check input:checked + label{
+    border-color: #000;
+}
+ #remains .modal-body .custom-check label{
+    border: 2px solid rgba(196.35, 196.35, 196.35);
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    margin: 0 0 15px;
+        height: 185px;
+}
+ #remains .modal-footer button{
+background: #000;
+font-size: 18px;
+font-weight: 500;
+color: #fff;
+font-family: Poppins;
+border: none;
+height: 50px;
+line-height: 50px;
+    width: 25%;
+ }
+
+/*editor*/
+.filter-name {
+  background: #795548;
+  padding: 2px;
+  display: inline-block;
+  color: white;
+  width: 100px;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.filter-group {
+  display: inline-block;
+  margin: 5px 15px;
+}
+
+
+
+canvas {
+  margin-bottom: 40px;
+  background: #ececec;
+  width: 600px;
+  max-width: 100%;
+}
+
+.filter-buttons button,
+.editor-buttons button {
+  margin: 4px;
+  background: black;
+  border: none;
+  color: white;
+  font-family: "Lato";
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.filter-buttons button.disabled {
+  background: #aaa;
+}
+
+.filter-buttons button {
+  padding: 2px 10px;
+  margin: 0;
+  cursor: pointer;
+  background: #ff5722;
+}
+
+.editor-buttons #reset-btn {
+  background: #f44336;
+}
+
+.editor-buttons #download-btn {
+  background: #009688;
+}
+
+.editor-buttons button:hover {
+  background: #795548;
+  cursor: pointer;
+}
+
+.editor-buttons {
+  display: inline-block;
+  margin-top: 10px;
+}
+/*
+[type="file"] {
+  display: none;
+}*/
+
+[type="file"] + label {
+  margin: 10px 4px;
+  background: #673ab7;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: "Lato";
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+[type="file"] + label:hover {
+  background: #3399ff;
+}
+/*option dropdown*/
+.surface-custom-inner .img-information .table-section-images-option .option-set-display{
+        display: flex;
+    justify-content: space-between;
+}
+.surface-custom-inner .img-information .table-section-images-option .option-set-display h4{
+
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    margin: 0 0;
+    color: #777;
+}
+.surface-custom-inner .img-information .table-section-images-option .option-set-display ul li:last-child{
+    border: none;
+}
+.surface-custom-inner .img-information .table-section-images-option .option-set-display ul li{
+    display: inline-block;
+    padding: 0 15px 0;
+    border-right: 1px solid #000;
+}
+.surface-custom-inner .img-information .table-section-images-option .option-set-display ul li a i{
+    margin: 0 5px 0 0;
+}
+.surface-custom-inner .img-information .table-section-images-option .option-set-display ul li a{
+        font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    margin: 0 0;
+    color: #777;
+}
+.surface-custom-inner .img-information .table-section-images-option table tbody tr td .camer-input input{
+
+    opacity: 0;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 0;
+
+}
+.surface-custom-inner .img-information .table-section-images-option table{
+    margin: 20px 0;
+        border: 1px solid black;
+}
+.surface-custom-inner .img-information .table-section-images-option table tbody tr td .camer-input i{
+    font-size: 30px;
+}
+.surface-custom-inner .img-information .table-section-images-option table tbody tr td .camer-input{
+
+    border: 2px dotted #000;
+    position: relative;
+    padding: 5px;
+    width: 45px;
+    height: 45px;
+    margin: 0 auto;
+
+}
+.surface-custom-inner .img-information .table-section-images-option table thead tr th:first-child{
+    width: 10%;
+}
+.surface-custom-inner .img-information .table-section-images-option table thead tr th:nth-child(2){
+    width: 30%;
+}
+.surface-custom-inner .img-information .table-section-images-option table thead tr th:nth-child(3){  
+    width: 15%;
+    text-align: center;
+}
+.surface-custom-inner .img-information .table-section-images-option table thead tr th:nth-child(4){  
+    width: 15%;
+    text-align: center;
+}
+.surface-custom-inner .img-information .table-section-images-option table thead tr th:nth-child(5){  
+    width: 30%;
+}
+.surface-custom-inner .img-information .table-section-images-option table thead tr th:nth-child(6){
+
+    text-align: right;
+
+}
+.surface-custom-inner .img-information .table-section-images-option table tbody tr td #basic-addon1{
+
+    border: 1px solid #000;
+    color: #000;
+    background: none;
+    margin: 3px 0;
+    height: 35px;
+
+}
+.surface-custom-inner .img-information .table-section-images-option table tbody tr td:last-child{
+    text-align: right;
+}
+.surface-custom-inner .img-information .table-section-images-option table tbody tr td .input-group input{
+
+    width: 85%;
+
+}
+.surface-custom-inner .img-information .table-section-images-option table tbody{
+    border: none;
+}
+.surface-custom-inner .img-information .table-section-images-option table tbody tr th{
+    vertical-align: middle;
+
+}
+.surface-custom-inner .img-information .table-section-images-option table tbody tr td{
+    vertical-align: middle;
+}
+.surface-custom-inner .img-information .table-section-images-option table tbody tr td input{
+        width: 100%;
+    border-radius: 0;
+    margin: 3px 0;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    outline: none;
+    padding: 0 8px;
+}
+.surface-custom-inner .img-information .table-section-images-option table tbody tr td p{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    color: #000;
+    opacity: .7;
+    margin: 0;
+}
+.surface-custom-inner .img-information .table-section-images-option table thead tr th{
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins';
+    color: #000;
+        border-right: 1px solid #000;
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1920px) {}
+
+@media only screen and (min-width: 1445px) and (max-width: 1599px) {}
+
+@media only screen and (min-width: 1366px) and (max-width: 1444px) {}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+@media only screen and (min-width: 520px) and (max-width: 767px) {}
+
+@media only screen and (min-width: 300px) and (max-width: 519px) {}
