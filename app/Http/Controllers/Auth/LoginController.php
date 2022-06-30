@@ -34,9 +34,9 @@ class LoginController extends Controller
     {
         if(Auth::user()->role_id == 1){
             //Session::put("project_id" , Auth::user()->project_id);
-            return '/index';
+            return '/dashboard';
         }else{
-            return '/index';
+            return '/dashboard';
         }
         
     }
