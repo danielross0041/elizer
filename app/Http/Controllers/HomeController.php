@@ -35,63 +35,15 @@ class HomeController extends Controller
      */
 
 
-
+    public function index(){
+        return view('index');
+    }
 
     public function dashboard()
     {
-        $orders = orders::where('is_active' ,1)->where('paid_status' ,'Paid')->get();
-
-        $balance = 0;
-        if ($orders) {
-            foreach ($orders as $key => $value) {
-                $balance += $value->amount;
-            }
-        }
-        $previous_balance = orders::select('amount')->where('is_active' ,1)->where('paid_status' ,'Paid')->limit(10)->latest('created_at')->get()->pluck('amount')->toArray();
-        $previous_balance = implode(",", $previous_balance);
-        // Balance Sheet End
-
-        // User Registration
-        $users = User::all();
-
-        // Refund Cases
-        $previous_balance_refund = orders::select('amount')->where('is_active' ,1)->where('paid_status' ,'Refund')->limit(10)->latest('created_at')->get()->pluck('amount')->toArray();
-        $balance_refund = 0;
-        $balance_count = count($previous_balance_refund);
-        foreach ($previous_balance_refund as $key => $value) {
-            $balance_refund += $value;
-        }
-
-        $previous_balance_refund = implode(",", $previous_balance_refund);
-
-        // Payment Schdule
-        $previous_balance_date = orders::where('is_active' ,1)->where('paid_status' , '!=', 'Pending')->get();
-        $date_array = array();
-        foreach ($previous_balance_date as $key => $value) {
-            array_push($date_array, date("M" , strtotime($value->created_at)));
-        }
-        ;
-        
-        usort( $date_array , function($a, $b){
-            $a = strtotime($a);
-            $b = strtotime($b);
-            return $a - $b;
-        });
-        $date_array = array_unique($date_array);
-        $sale_dates = "";
-        foreach ($date_array as $key => $value) {
-            $sale_dates  .= "'".$value."',";  
-        }
-        
-        $packages = packages::all();
-        $testimonials = testimonials::all();
-        return view('dashboard')->with(compact('orders','balance','previous_balance','users','previous_balance_refund','balance_refund','balance_count','sale_dates','packages','testimonials'));
+        return view('dashboard');
     }
 
-    public function index()
-    {
-        return view('welcome');
-    }
 
     public function steps()
     {

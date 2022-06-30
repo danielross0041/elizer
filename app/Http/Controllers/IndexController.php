@@ -41,8 +41,9 @@ class IndexController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function index(){
-        return view('admin.index');
+    public function login()
+    {
+        return view('auth.login');
     }
     public function editor()
     {
