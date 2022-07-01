@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\attributes;
 use App\Models\role_assign;
 use App\Models\category;
+use App\Models\product_image;
 
 use Illuminate\Support\Str;
 use Session;
@@ -377,6 +378,7 @@ class GenericController extends Controller
                                     <tbody>';
                                        if($loop) {
                                        foreach($loop as $key => $val){
+                                        $url = route('product_images',$val->id);
                                         $i=asset($val->image);
                                         $category= category::where('is_active',1)->where('is_deleted',0)->where('id',$val->category_id)->first();
                                        $body .= '<tr>
@@ -389,6 +391,7 @@ class GenericController extends Controller
                                           <td><img style="width:80px;height:80px;" src="'.$i.'"></td>
                                           <td>'.date("M d,Y" ,strtotime($val->created_at)).'</td>
                                           <td>
+                                            <a href="'.$url.'" class="btn btn-secondary" style="color:white;">Pictures</a>
                                              <button type="button" class="btn btn-primary editor-form" data-edit_id= "'.$val->id.'" data-name= "'.$val->name.'" data-description= "'.$val->description.'" data-category_id= "'.$val->category_id.'" data-price= "'.$val->price.'" data-image= "'.$i.'" data-specification= "'.$val->specification.'" >Edit</button>
                                              <button type="button" class="btn btn-danger delete-record" data-model="'.$data.'" data-id= "'.$val->id.'" >Delete</button>
                                           </td>
@@ -643,5 +646,34 @@ class GenericController extends Controller
         }
     }
 
-    
+    public function image_uploader(Request $request)
+    {
+        // dd($_POST);
+        try{
+            $post_feilds['product_id'] = $request->product_id;
+            $extension=array("jpeg","jpg","png","webp","jfif");
+            if($request->hasFile('image')){
+                $files = $request->file('image');
+                foreach($files as $file){
+                    $ext = $file->getClientOriginalExtension();
+                    if(in_array($ext,$extension)) {
+                        $file_name = $file->getClientOriginalName();
+                        $file_name = substr($file_name, 0, strpos($file_name, "."));
+                        $name = "uploads/product/" .$file_name."_".time().'.'.$file->getClientOriginalExtension();
+                        $destinationPath = public_path().'/uploads/product/';
+                        $share = $file->move($destinationPath,$name);
+                        $post_feilds['image'] = $name;
+                        $create = product_image::create($post_feilds);
+                    } else{
+                        $msg = "This File type is not Supported!";
+                        return redirect()->back()->with('error', "Error Code: ".$msg);
+                    }
+                }
+            }
+            return redirect()->back()->with('message', 'Images has been uploaded');
+        } catch(Exception $e) {
+          $error = $e->getMessage();
+          return redirect()->back()->with('error', "Error Code: ".$error);
+        }
+    }
 }

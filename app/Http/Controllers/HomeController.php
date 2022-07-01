@@ -12,6 +12,8 @@ use App\Models\testimonials;
 use App\Models\config;
 use App\Models\inquiry;
 use App\Models\logo;
+use App\Models\product_image;
+use App\Models\product;
 use Illuminate\Support\Str;
 use Session;
 use Helper;
@@ -45,6 +47,12 @@ class HomeController extends Controller
     }
 
 
+    public function product_images($id)
+    {
+        $product = product::where('id',$id)->first();
+        $product_image = product_image::where('product_id',$id)->where('is_active',1)->get();
+        return view('product_dashboard.product_images')->with(compact('product','product_image'));
+    }
     public function steps()
     {
         if(Auth::user()->role_id == 1){

@@ -37,6 +37,10 @@ Route::group(['middleware' => 'auth'], function()
 {
     Route::get('/', [HomeController::class, 'index'])->name('index');
 
+    Route::get('/product_images/{id}', [HomeController::class, 'product_images'])->name('product_images');
+    Route::post('/image_uploader', [GenericController::class, 'image_uploader'])->name('image_uploader');
+
+
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::get('/home', [HomeController::class, 'user_profile'])->name('user_profile');
     Route::get('/steps', [HomeController::class, 'steps'])->name('steps');
