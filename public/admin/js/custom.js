@@ -1,166 +1,19 @@
 // image editor
   $(function () {
-            $("#first_div").resizable({
-                handles: "n, e, s, w"
-            });
-        });
+    $("#first_div").resizable({
+      handles: "n, e, s, w"
+    });
+  });
 
 
   var img = new Image();
 var canvas = document.getElementById("canvas");
+var canvas2 = document.getElementById("canvas2");
 var ctx = canvas.getContext("2d");
+var ctx2 = canvas2.getContext("2d");
 var fileName = "";
 
 $(document).ready(function() {
-  $("#brightness-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.brightness(10).render();
-    });
-  });
-
-  $("#brightness-dec").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.brightness(-10).render();
-    });
-  });
-
-  $("#contrast-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.contrast(10).render();
-    });
-  });
-
-  $("#contrast-dec").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.contrast(-10).render();
-    });
-  });
-
-  $("#saturation-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.saturation(10).render();
-    });
-  });
-
-  $("#saturation-dec").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.saturation(-10).render();
-    });
-  });
-
-  $("#vibrance-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.vibrance(10).render();
-    });
-  });
-
-  $("#vibrance-dec").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.vibrance(-10).render();
-    });
-  });
-
-  $("#exposure-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.exposure(10).render();
-    });
-  });
-
-  $("#exposure-dec").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.exposure(-10).render();
-    });
-  });
-
-  $("#noise-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.noise(10).render();
-    });
-  });
-
-  $("#sharpen-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.sharpen(10).render();
-    });
-  });
-
-  $("#sepia-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.sepia(20).render();
-    });
-  });
-
-  $("#hue-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.hue(10).render();
-    });
-  });
-
-  $("#blur-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.stackBlur(5).render();
-    });
-  });
-
-  $("#gamma-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.gamma(0.1).render();
-    });
-  });
-
-  $("#clip-inc").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.clip(10).render();
-    });
-  });
-
-  $("#vintage-btn").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.vintage().render();
-    });
-  });
-
-  $("#lomo-btn").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.lomo().render();
-    });
-  });
-
-  $("#calrity-btn").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.clarity().render();
-    });
-  });
-
-  $("#sincity-btn").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.sinCity().render();
-    });
-  });
-
-  $("#crossprocess-btn").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.crossProcess().render();
-    });
-  });
-
-  $("#pinhole-btn").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.pinhole().render();
-    });
-  });
-
-  $("#nostalgia-btn").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.nostalgia().render();
-    });
-  });
-
-  $("#majestic-btn").on("click", function(e) {
-    Caman("#canvas", img, function() {
-      this.herMajesty().render();
-    });
-  });
 
   $("#download-btn").on("click", function(e) {
     var fileExtension = fileName.slice(-4);
@@ -186,9 +39,13 @@ $(document).ready(function() {
         img.src = reader.result;
         img.onload = function() {
           canvas.width = img.width;
+          canvas2.width = img.width;
           canvas.height = img.height;
+          canvas2.height = img.height;
           ctx.drawImage(img, 0, 0, img.width, img.height);
+          ctx2.drawImage(img, 0, 0, img.width, img.height);
           $("#canvas").removeAttr("data-caman-id");
+          $("#canvas2").removeAttr("data-caman-id");
         };
       },
       false

@@ -36,9 +36,19 @@ Route::get('/editor', [IndexController::class, 'editor'])->name('editor');
 Route::group(['middleware' => 'auth'], function()
 {
     Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/attribute/product/product-customization/{id}', [HomeController::class, 'product_customization'])->name('product_customization');
 
     Route::get('/product_images/{id}', [HomeController::class, 'product_images'])->name('product_images');
     Route::post('/image_uploader', [GenericController::class, 'image_uploader'])->name('image_uploader');
+
+
+    // Index Font
+    Route::post('/add_font', [GenericController::class, 'add_font'])->name('add_font');
+    Route::post('/choose_font_product', [GenericController::class, 'choose_font_product'])->name('choose_font_product');
+
+
+
+
 
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');

@@ -12,6 +12,8 @@ use App\Models\attributes;
 use App\Models\role_assign;
 use App\Models\category;
 use App\Models\product_image;
+use App\Models\font;
+use App\Models\product_font;
 
 use Illuminate\Support\Str;
 use Session;
@@ -378,7 +380,7 @@ class GenericController extends Controller
                                     <tbody>';
                                        if($loop) {
                                        foreach($loop as $key => $val){
-                                        $url = route('product_images',$val->id);
+                                        $url = route('product_customization',$val->id);
                                         $i=asset($val->image);
                                         $category= category::where('is_active',1)->where('is_deleted',0)->where('id',$val->category_id)->first();
                                        $body .= '<tr>
@@ -391,7 +393,7 @@ class GenericController extends Controller
                                           <td><img style="width:80px;height:80px;" src="'.$i.'"></td>
                                           <td>'.date("M d,Y" ,strtotime($val->created_at)).'</td>
                                           <td>
-                                            <a href="'.$url.'" class="btn btn-secondary" style="color:white;">Pictures</a>
+                                            <a href="'.$url.'" class="btn btn-secondary" style="color:white;">Add/Edit Customization Information</a>
                                              <button type="button" class="btn btn-primary editor-form" data-edit_id= "'.$val->id.'" data-name= "'.$val->name.'" data-description= "'.$val->description.'" data-category_id= "'.$val->category_id.'" data-price= "'.$val->price.'" data-image= "'.$i.'" data-specification= "'.$val->specification.'" >Edit</button>
                                              <button type="button" class="btn btn-danger delete-record" data-model="'.$data.'" data-id= "'.$val->id.'" >Delete</button>
                                           </td>
@@ -674,6 +676,71 @@ class GenericController extends Controller
         } catch(Exception $e) {
           $error = $e->getMessage();
           return redirect()->back()->with('error', "Error Code: ".$error);
+        }
+    }
+    public function choose_font_product(Request $request){
+        
+        try {
+            if($request->add == 1){
+                $delete = product_font::where('product_id',$request->product_id)->delete();
+                foreach ($request->font_id as $value) {
+                    $field['product_id'] = $request->product_id;
+                    $field['font_id'] = $value;
+                    $create = product_font::create($field);
+                }
+                $status['status'] = 1;
+                return json_encode($status);
+            } else{
+                $delete = product_font::where('product_id',$request->product_id)->where('font_id',$request->font_id)->delete();
+                $status['status'] = 1;
+                return json_encode($status);
+            }
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            $status['message'] = $error;
+            $status['status'] = 0;
+            return json_encode($status);
+        }
+    }
+    public function add_font(Request $request)
+    {
+        $check = font::where('name',$request->name)->first();
+        if ($check) {
+            $status['message'] = "This Font already exist!";
+            $status['status'] = 0;
+            return json_encode($status);
+        }
+        try{
+            if ($request->file('fontFile')) {
+                $file = $request->file('fontFile');
+                $file_name = $file->getClientOriginalName();
+                $file_name = substr($file_name, 0, strpos($file_name, "."));
+                $name = "font-uploads/" .$file_name."_".time().'.'.$file->getClientOriginalExtension();
+                $destinationPath = public_path().'/font-uploads/';
+                $share = $file->move($destinationPath,$name);
+                // dd($file_name);
+                $field['name'] = $request->name??$file_name;
+                $field['file'] = $name;
+                $create = font::create($field);
+                $status['path'] = $name;
+                $status['message'] = "File has been Uploaded";
+                $status['status'] = 1;
+                $status['id'] = $create->id;
+                $status['name'] = $create->name;
+                return json_encode($status);
+            } else{
+                $status['message'] = "File Could not be Uploaded";
+                $status['status'] = 0;
+                return json_encode($status);
+            }
+            $status['message'] = "File Could not be Uploaded";
+            $status['status'] = 0;
+            return json_encode($status);
+        }catch(Exception $e) {
+            $error = $e->getMessage();
+            $status['message'] = $error;
+            $status['status'] = 0;
+            return json_encode($status);
         }
     }
 }

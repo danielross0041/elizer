@@ -689,7 +689,7 @@ Color Pickers
 #add-fonts #myTabContent table{
     margin: 0;
 }
-#add-fonts #myTabContent table tbody tr:nth-child(1) td{
+/*#add-fonts #myTabContent table tbody tr:nth-child(1) td{
     font-family: Roboto;
 }
 #add-fonts #myTabContent table tbody tr:nth-child(2) td{
@@ -700,7 +700,7 @@ Color Pickers
 }
 #add-fonts #myTabContent table tbody tr:nth-child(3) td{
     font-family: Montserrat;
-}
+}*/
 #add-fonts #myTabContent table tbody tr td{
     font-size: 18px;
     font-weight: 500;
@@ -1195,7 +1195,120 @@ canvas {
     color: #000;
         border-right: 1px solid #000;
 }
+.fa-times{
+    cursor: pointer;
+}
 
+#preview .colors_select ul li{
+    display: inline-block;
+}
+#preview .colors_select ul li input{
+  display: none;
+}
+#preview .colors_select ul li input:checked + label{
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+#preview .colors_select ul li label{
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+#preview .custom-input input{
+        width: 100%;
+    border-radius: 0;
+    margin: 3px 0;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    outline: none;
+    padding: 0 8px;
+}
+#preview .custom-input label{
+        font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    color: #000;
+    opacity: .7;
+}
+#preview .custom-input p{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    color: #000;
+    opacity: .7;
+    text-align: right;
+    margin: 0;
+}
+#preview .modal-dialog{
+    max-width: 800px;
+}
+#preview .custom-input select{
+    width: 100%;
+    border-radius: 0;
+    margin: 3px 0;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    outline: none;
+    padding: 0 8px;
+
+}
+#preview .custom-input{
+      margin: 15px 0;
+}
+#preview h3{
+    font-size: 22px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    margin: 0 0;
+}
+#preview h5 span{
+            font-size: 16px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    color: #000;
+    opacity: .7;
+    margin: 0 0 0 5px;
+}
+#preview h5{
+    font-size: 18px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+#preview .border-set{
+        border-left: 1px solid #000;
+    padding: 0 15px 0 25px;
+} 
+.last-section-elizer a{
+    color: #fff;
+    margin: 0 8px;
+}
+.last-section-elizer{
+border-top: 1px solid #D5DBDB;
+    padding: 10px 32px;
+    background-color: #FAFAFA;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    position: fixed;
+    bottom: 4%;
+    width: 85%;
+}
 @media only screen and (min-width: 1600px) and (max-width: 1920px) {}
 
 @media only screen and (min-width: 1445px) and (max-width: 1599px) {}
