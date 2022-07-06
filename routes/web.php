@@ -44,7 +44,10 @@ Route::group(['middleware' => 'auth'], function()
 
     // Index Font
     Route::post('/add_font', [GenericController::class, 'add_font'])->name('add_font');
+    Route::post('/add_color', [GenericController::class, 'add_color'])->name('add_color');
     Route::post('/choose_font_product', [GenericController::class, 'choose_font_product'])->name('choose_font_product');
+    Route::post('/product-detail-customization', [GenericController::class, 'product_detail_customization'])->name('product_detail_customization');
+    Route::post('/remove_added_color', [GenericController::class, 'remove_added_color'])->name('remove_added_color');
 
 
 

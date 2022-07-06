@@ -54,29 +54,50 @@
                                 <div class="col-12 col-md-12 col-sm-12 col-lg-6 col-xl-6 col-xxl-6">
                                     <div class="custom-input">
                                         <label>label <abbr>*</abbr></label>
-                                        <input type="text" name="surface" />
+                                        <input type="text" class="customization" name="image_label" id="image-label" value="{{$product_customization->image_label??''}}" />
                                         <p>You have 91 of 100 characters remaining</p>
                                     </div>
                                     <div class="custom-input">
                                         <label>Instruction <abbr>(Optional)</abbr></label>
-                                        <textarea placeholder="instruction"></textarea>
+                                        <textarea placeholder="instruction" class="customization" name="image_instruction" id="image-instruction">{{$product_customization->image_instruction??''}}</textarea>
                                         <p>You have 200 of 200 characters remaining</p>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl-4">
                                     <div class="custom-file">
                                         <label>Preview Image</label>
-                                        <div class="upload-file-body">
-                                            <input type="file" id="upload-file" placeholder="" />
-                                            <!-- <input type="file" name=""> -->
-                                            <i class="fas fa-image"></i>
-                                            <p>Drag or upload square image</p>
-                                            <ul>
-                                                <li>Min: 400x400px</li>
-                                                <li>JPEG or PNG</li>
-                                                <li>Max Size: 3 MB</li>
-                                            </ul>
-                                        </div>
+                                        <form id="image-form" method="POST" enctype="multipart/form-data">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                                            <div class="upload-file-body">
+                                                <input type="file" name="image" id="upload-file" placeholder="" />
+                                                <!-- <input type="file" name=""> -->
+                                                @if($product_customization && $product_customization->image)
+                                                <div class="image-upload-set-here" style="display:none;" >
+                                                    <i class="fas fa-image"></i>
+                                                    <p>Drag or upload square image</p>
+                                                    <ul>
+                                                        <li>Min: 400x400px</li>
+                                                        <li>JPEG or PNG</li>
+                                                        <li>Max Size: 3 MB</li>
+                                                    </ul>
+                                                </div>
+                                                <img class="image-upload-default" src="{{asset($product_customization->image??'')}}" style="display:block;" >
+                                                @else
+                                                <div class="image-upload-set-here" style="display:block;" >
+                                                    <i class="fas fa-image"></i>
+                                                    <p>Drag or upload square image</p>
+                                                    <ul>
+                                                        <li>Min: 400x400px</li>
+                                                        <li>JPEG or PNG</li>
+                                                        <li>Max Size: 3 MB</li>
+                                                    </ul>
+                                                </div>
+                                                <img class="image-upload-default" src="{{asset($product_customization->image??'')}}" style="display:none;" >
+                                                @endif
+                                            </div>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>
@@ -112,14 +133,14 @@
                                     <div class="col-12 col-md-12 col-sm-12 col-lg-5 col-xl-5 col-xxl-5">
                                         <div class="custom-input">
                                             <label>label <abbr>*</abbr></label>
-                                            <input type="text" name="surface" />
+                                            <input type="text" name="font_label" id="font-label" class="customization" value="{{$product_customization->font_label??''}}" />
                                             <p>You have 100 of 100 characters remaining</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-12 col-sm-12 col-lg-7 col-xl-7 col-xxl-7">
                                         <div class="custom-input">
                                             <label>Instruction <abbr>(Optional)</abbr></label>
-                                            <input type="text" name="surface" />
+                                            <input type="text" name="font_instruction" id="font-instruction" class="customization" value="{{$product_customization->font_instruction??''}}" />
                                             <p>You have 200 of 200 characters remaining</p>
                                         </div>
                                     </div>
@@ -134,7 +155,7 @@
                                                     @foreach($fonts as $font)
                                                     @if(in_array($font->id,$product_font))
                                                     <li>
-                                                        <h4>{{$font->name}}</h4>
+                                                        <h4 style="font-family:{{$font->name}};">{{$font->name}}</h4>
                                                         <a><i class="fas fa-times deleted-font-added" data-id="{{$font->id}}"></i></a>
                                                     </li>
                                                     @endif
@@ -159,14 +180,14 @@
                                     <div class="col-12 col-md-12 col-sm-12 col-lg-5 col-xl-5 col-xxl-5">
                                         <div class="custom-input">
                                             <label>label <abbr>*</abbr></label>
-                                            <input type="text" name="surface" />
+                                            <input type="text" name="color_label" id="color-label" class="customization" value="{{$product_customization->color_label??''}}" />
                                             <p>You have 100 of 100 characters remaining</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-12 col-sm-12 col-lg-7 col-xl-7 col-xxl-7">
                                         <div class="custom-input">
                                             <label>Instruction <abbr>(Optional)</abbr></label>
-                                            <input type="text" name="surface" />
+                                            <input type="text" name="color_instruction" id="color-instruction" class="customization" value="{{$product_customization->color_instruction??''}}" />
                                             <p>You have 200 of 200 characters remaining</p>
                                         </div>
                                     </div>
@@ -177,19 +198,19 @@
                                     <div class="row align-items-center">
                                         <div class="col-12 col-md-12 col-sm-12 col-lg-8 col-xl-8 col-xxl-8">
                                             <div class="added-body">
-                                                <ul>
+                                                <ul id="color-added-list">
+                                                    @foreach($product_color as $color)
                                                     <li>
-                                                        <div class="color"></div>
-                                                        <h4>black</h4>
-                                                        <h5>Default</h5>
-                                                        <a href="javavoid:;"><i class="fas fa-pencil"></i></a><a href="javavoid:;"><i class="fas fa-times"></i></a>
+                                                        <div class="color" style="background-color: {{$color->color}};"></div>
+                                                        <h4>{{$color->name}}</h4>
+                                                        <a class="edit-added-color" data-id="{{$color->id}}" data-name="{{$color->name}}" data-color="{{$color->color}}">
+                                                            <i class="fas fa-pencil"></i>
+                                                        </a>
+                                                        <a class="remove-added-color" data-name="{{$color->name}}">
+                                                            <i class="fas fa-times"></i>
+                                                        </a>
                                                     </li>
-                                                    <li>
-                                                        <div class="color-fff"></div>
-                                                        <h4>White</h4>
-                                                        <h5>Default</h5>
-                                                        <a href="javavoid:;"><i class="fas fa-pencil"></i></a><a href="javavoid:;"><i class="fas fa-times"></i></a>
-                                                    </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
@@ -360,7 +381,13 @@
                                             <div class="col-12 col-md-12 col-sm-12 col-lg-6 col-xl-6 col-xxl-6">
                                                 <div class="preview-wrapper">
                                                     <div class="img-canvas">
-                                                        <canvas id="canvas" class="canvas-image-custom"></canvas>
+                                                        @if($product_customization && $product_customization->image)
+                                                        <canvas id="canvas" class="canvas-image-custom" style="display: none;"></canvas>
+                                                        <img class="canvas-default" src="{{asset($product_customization->image)}}" style="display: block;">
+                                                        @else
+                                                        <canvas id="canvas" class="canvas-image-custom" style="display:block;"></canvas>
+                                                        <img class="canvas-default" src="{{asset($product_customization->image??'')}}" style="display:none;">
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -852,7 +879,7 @@
                             <ul id="font-list">
                                 @foreach($fonts as $font)
                                 @if(in_array($font->id,$product_font))
-                                <li id="remove_font{{$font->id}}">{{$font->name}}<i class="fas fa-times remove_font" data-font_id="{{$font->id}}"></i></li>
+                                <li id="remove_font{{$font->id}}" style="font-family: {{$font->name}};">{{$font->name}}<i class="fas fa-times remove_font" data-font_id="{{$font->id}}"></i></li>
                                 @endif
                                 @endforeach
                             </ul>
@@ -881,13 +908,14 @@
                             </div>
                             <div class="custom-input">
                                 <label>Color Name</label>
-                                <input type="text" name="text" placeholder="Enter Color Name" />
+                                <input type="hidden" name="record_id" id="record_id">
+                                <input type="text" name="color" id="color-name" placeholder="Enter Color Name" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-bs-dismiss="modal">Add Customisation</button>
+                    <button type="button" id="color-submit">Add Customisation</button>
                 </div>
             </div>
         </div>
@@ -901,53 +929,38 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row align-items-center">
-                        <div class="col-12 col-md-12 col-sm-12 col-lg-6 col-xl-6 col-xxl-6">
+                    <div class="d-flex justify-content-evenly">
+                        <div>
                             <div class="img-canvas">
-                                <canvas id="canvas2" class="canvas-image-custom"></canvas>
+                                @if($product_customization && $product_customization->image)
+                                <canvas id="canvas2" class="canvas-image-custom" style="display:none;"></canvas>
+                                <img class="canvas-default" src="{{asset($product_customization->image)}}" style="display:block;">
+                                @else
+                                <canvas id="canvas2" class="canvas-image-custom" style="display:block;"></canvas>
+                                <img class="canvas-default" src="{{asset($product_customization->image??'')}}" style="display:none;">
+                                @endif
                             </div>
                             <p id="preview-canvas-text">bajajfjksf</p>
                         </div>
-                        <div class="col-12 col-md-12 col-sm-12 col-lg-6 col-xl-6 col-xxl-6 border-set">
+                        <div class="border-set">
                             <div class="preview-left">
-                                <h3>Font Name</h3>
-                                <h6>Roboto</h6>
+                                <h3 id="modal-font-label">Font Name</h3>
+                                <h6 id="modal-font-instruction">Roboto</h6>
                                 <div class="custom-input">
                                     <select id="select-font-preview" aria-label="Default select example">
-                                        <option disabled selected>Select Font</option>
                                         
                                     </select>
                                 </div>
                                 <div class="colors_select">
-                                    <h5>Colors:<span>Red</span></h5>
-                                    <ul>
+                                    <div class="d-flex">
+                                        <h5 id="modal-color-label">Colors:</h5>
+                                        <span class="color-span">Green</span>
+                                    </div>
+                                    <h6 id="modal-color-instruction">Roboto</h6>
+                                    <ul id="color-select-list">
                                         <li>
                                             <input type="radio" id="white" name="color_select" />
                                             <label style="background-color: #fff;" for="white"><i class="fas fa-check"></i></label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="fed533" name="color_select" />
-                                            <label style="background-color: #fed533;" for="fed533"><i class="fas fa-check"></i></label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="f36b26" name="color_select" />
-                                            <label style="background-color: #f36b26;" for="f36b26"><i class="fas fa-check"></i></label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="7bba3c" name="color_select" />
-                                            <label style="background-color: #7bba3c;" for="7bba3c"><i class="fas fa-check"></i></label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="1790c8" name="color_select" />
-                                            <label style="background-color: #1790c8;" for="1790c8"><i class="fas fa-check"></i></label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="8d429f" name="color_select" />
-                                            <label style="background-color: #8d429f;" for="8d429f"><i class="fas fa-check"></i></label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="293333" name="color_select" />
-                                            <label style="background-color: #293333;" for="293333"><i class="fas fa-check"></i></label>
                                         </li>
                                     </ul>
                                 </div>
@@ -1038,7 +1051,7 @@
 
         if ($(this).prop('checked')) {
             var add = 1;
-            var element = '<li id="remove_font'+id+'">'+name+'<i class="fas fa-times remove_font" data-font_id="'+id+'"></i></li>';
+            var element = '<li id="remove_font'+id+'" style="font-family: '+name+';">'+name+'<i class="fas fa-times remove_font" data-font_id="'+id+'"></i></li>';
             $("#font-list").append(element);
         } else{
             $("#remove_font"+id).remove()
@@ -1058,7 +1071,7 @@
                 var id = $(e).data("id");
                 font_id.push(id)
                 element = element+'<li>\
-                                <h4>'+$(e).val()+'</h4>\
+                                <h4 style="font-family:'+$(e).val()+';">'+$(e).val()+'</h4>\
                                 <a><i class="fas fa-times deleted-font-added" data-id="'+id+'"></i></a>\
                             </li>'
             }
@@ -1076,7 +1089,7 @@
                 }
             }
         });
-    })
+    });
     $("body").on("click" ,".deleted-font-added",function(){
         var id = $(this).data("id")
         $(this).closest("li").remove();
@@ -1093,15 +1106,15 @@
                 }
             }
         });
-    })
+    });
     $("body").on("click" ,"#add-new-fonts",function(){
         $(this).css("display","none")
         $(".font-file").css("display", "block");
-    })
+    });
     $("body").on("click" ,"#cancel-upload",function(){
         $("#add-new-fonts").css("display","block")
         $(".font-file").css("display", "none");
-    })
+    });
     $("body").on("click" ,"#add-font-upload",function(){
         $("#font-form").submit()
     });
@@ -1122,11 +1135,9 @@
                 processData: false,
                 success: function (response) {
                     if(response.status == 1) {
-                        console.log(response.path);
                         document.getElementById("font-form").reset();
                         Swal.fire(response.message, '', 'success');
-                        var element = '<li id="remove_font'+response.id+'">'+response.name+'<i class="fas fa-times remove_font" data-font_id="'+response.id+'"></i></li>';
-                        $("#font-list").append(element);
+                        
                         var element2 = '<style type="text/css">\
                                             @font-face {\
                                                 font-family: "'+response.name+'";\
@@ -1134,6 +1145,8 @@
                                             }\
                                         </style>';
                         $("head").append(element2);
+                        var element = '<li id="remove_font'+response.id+'" style="font-family: '+response.name+';">'+response.name+'<i class="fas fa-times remove_font" data-font_id="'+response.id+'"></i></li>';
+                        $("#font-list").append(element);
                         var fontElement = '<tr>\
                                             <td>\
                                             <div class="form-check">\
@@ -1153,20 +1166,156 @@
     });
 
     $("body").on("click" ,"#open-preview-modal",function(){
-        var element = '<option disabled selected>Select Font</option>';
+        $("#modal-color-label").text($("#color-label").val())
+        $("#modal-color-instruction").text($("#color-instruction").val())
+        $("#modal-font-label").text($("#font-label").val())
+        $("#modal-font-instruction").text($("#font-instruction").val())
+        var element = '';
         $("#font-added").find('h4').each(function(i,e){
-            console.log($(e).text())
             element = element + '<option style="font-family: '+$(e).text()+';" value="'+$(e).text()+'">'+$(e).text()+'</option>';
         }).get();
+        var element2 = '';
+        var flag = 'checked';
+        $("#color-added-list").find('li').each(function(i,e){
+
+            var color = $(e).find('div').attr('style');
+            var name = $(e).find('h4').text();
+            element2 = element2 + '<li>\
+                                        <input type="radio" class="select-color" '+flag+' id="'+name+'" name="color_select" />\
+                                        <label style="'+color+'" for="'+name+'"><i class="fas fa-check"></i></label>\
+                                    </li>';
+            if (flag == 'checked') {
+                $(".color-span").text(name)
+            }
+            flag = '';
+        }).get();
+        $("#color-select-list").html(element2)
         $("#select-font-preview").html(element)
         $("#preview").modal("show");
-    })
+    });
+    $("body").on("change" ,".select-color",function(){
+        $(".color-span").text($(this).attr('id'))
+    });
     $("body").on("change" ,"#select-font-preview",function(){
         var font = $(this).find(":selected").text();
         $("#select-font-preview").css("font-family" , font)
         $("#preview-canvas-text").css("font-family" , font)
+    });
+
+    $("#upload-file").on("change", function() {
+        let form = document.getElementById('image-form');
+        let formData = new FormData(form);
+        $.ajax({
+            dataType : 'json',
+            type:'POST',
+            url: "{{route('product_detail_customization')}}",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if(response.status == 1) {
+                    console.log(response.path)
+                    $(".image-upload-set-here").css('display','none')
+                    $(".image-upload-default").css('display','block')
+                    $('.image-upload-default').attr('src','{{ asset('/') }}' + response.path)
+                }else{
+                    Swal.fire(response.message, '', 'error');
+                }
+            }
+        });
+    });
+    $("body").on("change" ,".customization",function(){
+        var name = $(this).attr('name')
+        var value = $(this).val()
+        $.ajax({
+            dataType : 'json',
+            type:'POST',
+            url: "{{route('product_detail_customization')}}",
+            data: {name:name, value:value, product_id: {{$product->id}}, _token: '{{csrf_token()}}'},
+            success: function (response) {
+                if(response.status == 0) {
+                    Swal.fire(response.message, '', 'error');
+                }
+            }
+        });
+    });
+    $("body").on("click" ,"#color-submit",function(){
+        var name = $("#color-name").val();
+        var color = $(".vc-input__input").val()
+        if (name == '') {
+            Swal.fire('Please name the color', '', 'error');
+        } else{
+            $.ajax({
+                dataType : 'json',
+                type:'POST',
+                url: "{{route('add_color')}}",
+                data: {name:name, color:color, product_id: {{$product->id}}, _token: '{{csrf_token()}}'},
+                success: function (response) {
+                    if(response.status == 0) {
+                        Swal.fire(response.message, '', 'error');
+                    } else{
+                        var element = '<li>\
+                                        <div class="color" style="background-color: '+color+';"></div>\
+                                        <h4>'+name+'</h4>\
+                                        <a class="edit-added-color" data-id="'+response.color_id+'" data-name="'+name+'" data-color="'+color+'">\
+                                            <i class="fas fa-pencil"></i>\
+                                        </a>\
+                                        <a class="remove-added-color" data-name="'+name+'">\
+                                            <i class="fas fa-times"></i>\
+                                        </a>\
+                                    </li>';
+                        $("#color-added-list").append(element);
+                        Swal.fire(response.message, '', 'success');
+                        $('#add-color').modal('toggle');
+                        $("#color-name").val('')
+                    }
+                }
+            });
+        }
+    });
+    $("body").on("change" ,".vc-input__input",function(){
+        console.log("done")
     })
+    $("body").on("click" ,".edit-added-color",function(){
+        var name = $(this).data("name");
+        var color = $(this).data("color");
+        var record_id = $(this).data("id");
+        $("#record_id").val(record_id);
+        $("#color-name").val(name);
+        $(".vc-input__input").trigger('value', color)
+        var input = $('.vc-input__input').val(color);
+        var e = document.createEvent('HTMLEvents');
+        e.initEvent('input', true, true);
+        input[0].dispatchEvent(e);
+        $('#add-color').modal('show');
+    })
+    function hexToRgb(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+    $("body").on("click" ,".remove-added-color",function(){
+        var name = $(this).data("name");
+        var element = $(this);
+        $.ajax({
+            dataType : 'json',
+            type:'POST',
+            url: "{{route('remove_added_color')}}",
+            data: {name:name, product_id: {{$product->id}}, _token: '{{csrf_token()}}'},
+            success: function (response) {
+                if(response.status == 0) {
+                    Swal.fire(response.message, '', 'error');
+                } else{
+                    element.closest('li').remove()
+                }
+            }
+        });
+    });
+    
 </script>
 @endsection
 
-<!-- select-font-preview -->
+

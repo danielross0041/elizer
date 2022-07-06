@@ -14,6 +14,8 @@ use App\Models\category;
 use App\Models\product_image;
 use App\Models\font;
 use App\Models\product_font;
+use App\Models\product_customization;
+use App\Models\product_color;
 
 use Illuminate\Support\Str;
 use Session;
@@ -718,7 +720,7 @@ class GenericController extends Controller
                 $name = "font-uploads/" .$file_name."_".time().'.'.$file->getClientOriginalExtension();
                 $destinationPath = public_path().'/font-uploads/';
                 $share = $file->move($destinationPath,$name);
-                // dd($file_name);
+
                 $field['name'] = $request->name??$file_name;
                 $field['file'] = $name;
                 $create = font::create($field);
@@ -736,7 +738,86 @@ class GenericController extends Controller
             $status['message'] = "File Could not be Uploaded";
             $status['status'] = 0;
             return json_encode($status);
-        }catch(Exception $e) {
+        } catch(Exception $e) {
+            $error = $e->getMessage();
+            $status['message'] = $error;
+            $status['status'] = 0;
+            return json_encode($status);
+        }
+    }
+    public function product_detail_customization(Request $request)
+    {
+        try{
+            if ($request->file('image')) {
+                $file = $request->file('image');
+                $file_name = $file->getClientOriginalName();
+                $file_name = substr($file_name, 0, strpos($file_name, "."));
+                $name = "image-uploads/" .$file_name."_".time().'.'.$file->getClientOriginalExtension();
+                $destinationPath = public_path().'/image-uploads/';
+                $share = $file->move($destinationPath,$name);
+                $post_feilds['image'] = $name;
+                $status['path'] = $name;
+            } else{
+                $post_feilds[$request->name] = $request->value;
+            }
+            $check = product_customization::where('product_id',$request->product_id)->first();
+            if($check){
+                $update = product_customization::where('product_id',$request->product_id)->update($post_feilds);
+            } else{
+                $post_feilds['product_id'] = $request->product_id;
+                $create = product_customization::create($post_feilds);
+            }
+            $status['status'] = 1;
+            return json_encode($status);
+        } catch(Exception $e) {
+            $error = $e->getMessage();
+            $status['message'] = $error;
+            $status['status'] = 0;
+            return json_encode($status);
+        }
+    }
+    public function add_color(Request $request)
+    {
+        // dd($request->record_id);
+        try{
+            if (isset($request->record_id) && $request->record_id != '') {
+                dd("here");
+            } else{
+                $checkName = product_color::where('product_id',$request->product_id)->where('name',$request->name)->first();
+                $checkColor = product_color::where('product_id',$request->product_id)->where('color',$request->color)->first();
+                if ($checkName) {
+                    $status['message'] = "This Name is already taken";
+                    $status['status'] = 0;
+                    return json_encode($status);
+                } elseif($checkColor){
+                    $status['message'] = "This Color already exist";
+                    $status['status'] = 0;
+                    return json_encode($status);
+                } else{
+                    $field['product_id'] = $request->product_id;
+                    $field['name'] = $request->name;
+                    $field['color'] = $request->color;
+                    $create = product_color::create($field);
+                    $status['message'] = "Color has been stored";
+                    $status['status'] = 1;
+                    $status['color_id'] = $create->id;
+                    return json_encode($status);
+                }
+            }
+        } catch(Exception $e) {
+            $error = $e->getMessage();
+            $status['message'] = $error;
+            $status['status'] = 0;
+            return json_encode($status);
+        }
+    }
+    public function remove_added_color(Request $request)
+    {
+        try{
+            $delete = product_color::where('product_id',$request->product_id)->where('name',$request->name)->delete();
+            $status['status'] = 1;
+            return json_encode($status);
+        } catch(Exception $e) {
             $error = $e->getMessage();
             $status['message'] = $error;
             $status['status'] = 0;

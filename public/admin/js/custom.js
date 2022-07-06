@@ -16,6 +16,7 @@ var fileName = "";
 $(document).ready(function() {
 
   $("#download-btn").on("click", function(e) {
+
     var fileExtension = fileName.slice(-4);
     if (fileExtension == ".jpg" || fileExtension == ".png") {
       var actualName = fileName.substring(0, fileName.length - 4);
@@ -26,12 +27,10 @@ $(document).ready(function() {
   $("#upload-file").on("change", function() {
     var file = document.querySelector("#upload-file").files[0];
     var reader = new FileReader();
-
     if (file) {
       fileName = file.name;
       reader.readAsDataURL(file);
     }
-
     reader.addEventListener(
       "load",
       function() {
@@ -44,6 +43,9 @@ $(document).ready(function() {
           canvas2.height = img.height;
           ctx.drawImage(img, 0, 0, img.width, img.height);
           ctx2.drawImage(img, 0, 0, img.width, img.height);
+          $(".canvas-default").css('display','none')
+          $("#canvas").css('display','block')
+          $("#canvas2").css('display','block')
           $("#canvas").removeAttr("data-caman-id");
           $("#canvas2").removeAttr("data-caman-id");
         };
@@ -98,10 +100,7 @@ function download(canvas, filename) {
 
 $('#add-new-fonts').click(function(){
   $('#add-new-fonts').css('display','none')
-  $('.accept-fonts').css('display','none')
   $('.font-file').css('display','block')
-
-
 })
 
 
@@ -148,7 +147,7 @@ new Vue({
     ChromeColor: VueColor.Chrome
   },
   data: {
-    color: "#C07236"
+    color: "#FF0000"
   }
 }),
 //Sketch Selector
@@ -157,13 +156,16 @@ Vue.component("color-picker", VueColor.Sketch), new Vue({
   data: function() {
     return {
       colors: {
-        hex: "#904DB2"
+        hex: "#000000"
       }
     }
   },
   methods: {
     updateValue: function(o) {
-      console.log(o, o.hex)
+      data: {
+        color: o
+      }
+      // console.log(o, o.hex)
     }
   }
 });

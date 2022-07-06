@@ -111,7 +111,7 @@
     $('.scrollup').on('click', function () {
         $("html, body").animate({
             scrollTop: 0
-        }, 600);
+        }, 800);
         return false;
     });
 

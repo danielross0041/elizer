@@ -16,6 +16,8 @@ use App\Models\product_image;
 use App\Models\product;
 use App\Models\font;
 use App\Models\product_font;
+use App\Models\product_customization;
+use App\Models\product_color;
 use Illuminate\Support\Str;
 use Session;
 use Helper;
@@ -44,15 +46,11 @@ class HomeController extends Controller
     public function product_customization($id)
     {
         $product_font = product_font::where('product_id',$id)->get()->pluck('font_id')->toArray();
-        // dd($product_font);
-        // if(in_array(4,$product_font)) {
-        //     dd("han bhenchod");
-        // } else{
-        //     dd("nai bharwe");
-        // }
+        $product_color = product_color::where('product_id',$id)->get();
         $fonts = font::where('is_active',1)->where('is_deleted',0)->get();
         $product = product::where('id',$id)->first();
-        return view('product_dashboard.index')->with(compact('product','fonts','product_font'));
+        $product_customization = product_customization::where('is_active',1)->where('product_id',$id)->first();
+        return view('product_dashboard.index')->with(compact('product','fonts','product_font','product_customization','product_color'));
     }
 
     public function index(){
