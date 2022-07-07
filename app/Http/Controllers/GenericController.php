@@ -778,10 +778,27 @@ class GenericController extends Controller
     }
     public function add_color(Request $request)
     {
-        // dd($request->record_id);
         try{
             if (isset($request->record_id) && $request->record_id != '') {
-                dd("here");
+                $checkName = product_color::where('product_id',$request->product_id)->where('name',$request->name)->where('id','!=',$request->record_id)->first();
+                $checkColor = product_color::where('product_id',$request->product_id)->where('color',$request->color)->where('id','!=',$request->record_id)->first();
+                if ($checkName) {
+                    $status['message'] = "This Name is already taken";
+                    $status['status'] = 0;
+                    return json_encode($status);
+                } elseif($checkColor){
+                    $status['message'] = "This Color already exist";
+                    $status['status'] = 0;
+                    return json_encode($status);
+                } else{
+                    $field['name'] = $request->name;
+                    $field['color'] = $request->color;
+                    $update = product_color::where('id',$request->record_id)->update($field);
+                    $status['message'] = "Color has been updated";
+                    $status['status'] = 1;
+                    $status['color_id'] = $request->record_id;
+                    return json_encode($status);
+                }
             } else{
                 $checkName = product_color::where('product_id',$request->product_id)->where('name',$request->name)->first();
                 $checkColor = product_color::where('product_id',$request->product_id)->where('color',$request->color)->first();

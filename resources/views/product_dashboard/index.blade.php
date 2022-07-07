@@ -200,7 +200,7 @@
                                             <div class="added-body">
                                                 <ul id="color-added-list">
                                                     @foreach($product_color as $color)
-                                                    <li>
+                                                    <li id="color-list{{$color->id}}">
                                                         <div class="color" style="background-color: {{$color->color}};"></div>
                                                         <h4>{{$color->name}}</h4>
                                                         <a class="edit-added-color" data-id="{{$color->id}}" data-name="{{$color->name}}" data-color="{{$color->color}}">
@@ -916,6 +916,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="color-submit">Add Customisation</button>
+                    <button type="button" id="color-update" style="display:none;">Update Customisation</button>
                 </div>
             </div>
         </div>
@@ -1254,7 +1255,7 @@
                     if(response.status == 0) {
                         Swal.fire(response.message, '', 'error');
                     } else{
-                        var element = '<li>\
+                        var element = '<li id="color-list'+response.color_id+'">\
                                         <div class="color" style="background-color: '+color+';"></div>\
                                         <h4>'+name+'</h4>\
                                         <a class="edit-added-color" data-id="'+response.color_id+'" data-name="'+name+'" data-color="'+color+'">\
@@ -1277,6 +1278,8 @@
         console.log("done")
     })
     $("body").on("click" ,".edit-added-color",function(){
+        $("#color-submit").css('display','none');
+        $("#color-update").css('display',"")
         var name = $(this).data("name");
         var color = $(this).data("color");
         var record_id = $(this).data("id");
@@ -1289,14 +1292,42 @@
         input[0].dispatchEvent(e);
         $('#add-color').modal('show');
     })
-    function hexToRgb(hex) {
-      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-      return result ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16)
-      } : null;
-    }
+    $("body").on("click" ,"#color-update",function(){
+        var name = $("#color-name").val();
+        var color = $(".vc-input__input").val();
+        var record_id = $("#record_id").val();
+        if (name == '') {
+            Swal.fire('Please name the color', '', 'error');
+        } else{
+            $.ajax({
+                dataType : 'json',
+                type:'POST',
+                url: "{{route('add_color')}}",
+                data: {name:name, record_id:record_id, color:color, product_id: {{$product->id}}, _token: '{{csrf_token()}}'},
+                success: function (response) {
+                    if(response.status == 0) {
+                        Swal.fire(response.message, '', 'error');
+                    } else{
+                        $("#record_id").val('');
+                        $("#color-submit").css('display','');
+                        $("#color-update").css('display','none')
+                        $("#color-name").val('')
+                        Swal.fire(response.message, '', 'success');
+                        var element = '<div class="color" style="background-color: '+color+';"></div>\
+                                        <h4>'+name+'</h4>\
+                                        <a class="edit-added-color" data-id="'+response.color_id+'" data-name="'+name+'" data-color="'+color+'">\
+                                            <i class="fas fa-pencil"></i>\
+                                        </a>\
+                                        <a class="remove-added-color" data-name="'+name+'">\
+                                            <i class="fas fa-times"></i>\
+                                        </a>';
+                        $("#color-list"+response.color_id).html(element);
+                        $('#add-color').modal('toggle');
+                    }
+                }
+            });
+        }
+    })
     $("body").on("click" ,".remove-added-color",function(){
         var name = $(this).data("name");
         var element = $(this);

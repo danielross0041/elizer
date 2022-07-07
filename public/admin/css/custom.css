@@ -1200,6 +1200,9 @@ canvas {
 
 #preview .colors_select ul li{
     display: inline-block;
+    margin: 0 0 5px 5px;
+    border: 1px solid;
+    padding: 4px;
 }
 #preview .colors_select ul li input{
   display: none;
@@ -1217,6 +1220,7 @@ canvas {
   cursor: pointer;
   color: transparent;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0px !important;
 }
 #preview .custom-input input{
         width: 100%;
