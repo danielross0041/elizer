@@ -61,6 +61,10 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
+    public function test()
+    {
+        return view('product_dashboard.test');
+    }
 
 
     public function product_images($id)

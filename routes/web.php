@@ -36,6 +36,7 @@ Route::get('/editor', [IndexController::class, 'editor'])->name('editor');
 Route::group(['middleware' => 'auth'], function()
 {
     Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/test', [HomeController::class, 'test'])->name('test');
     Route::get('/attribute/product/product-customization/{id}', [HomeController::class, 'product_customization'])->name('product_customization');
 
     Route::get('/product_images/{id}', [HomeController::class, 'product_images'])->name('product_images');

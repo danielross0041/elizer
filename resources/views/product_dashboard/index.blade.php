@@ -707,6 +707,7 @@
                 </div>
             </div>
         </div>
+
     </section>
 
     <div class="last-section-elizer">
@@ -931,7 +932,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="d-flex justify-content-evenly">
-                        <div>
+                        <div class="modal-image">
                             <div class="img-canvas">
                                 @if($product_customization && $product_customization->image)
                                 <canvas id="canvas2" class="canvas-image-custom" style="display:none;"></canvas>
@@ -941,7 +942,7 @@
                                 <img class="canvas-default" src="{{asset($product_customization->image??'')}}" style="display:none;">
                                 @endif
                             </div>
-                            <p id="preview-canvas-text">bajajfjksf</p>
+                            <p id="preview-canvas-text"></p>
                         </div>
                         <div class="border-set">
                             <div class="preview-left">
@@ -967,14 +968,14 @@
                                 </div>
                                 <div class="custom-input">
                                     <label><span>*</span>Line 1</label>
-                                    <input type="text" name="name" />
+                                    <input type="text" maxlength="200" name="name" id="line1-input" />
                                     <p>200 character limits</p>
                                 </div>
-                                <div class="custom-input">
+                                <!-- <div class="custom-input">
                                     <label><span>*</span>Line 2</label>
                                     <input type="text" name="name" />
                                     <p>200 character limits</p>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -984,6 +985,7 @@
     </div>
 
 </main>
+
 @endsection
 @section('css')
 
@@ -1172,8 +1174,14 @@
         $("#modal-font-label").text($("#font-label").val())
         $("#modal-font-instruction").text($("#font-instruction").val())
         var element = '';
+        var i = 0;
         $("#font-added").find('h4').each(function(i,e){
             element = element + '<option style="font-family: '+$(e).text()+';" value="'+$(e).text()+'">'+$(e).text()+'</option>';
+            if (i == 0) {
+                $("#select-font-preview").css("font-family" , $(e).text())
+                $("#preview-canvas-text").css("font-family" , $(e).text())
+            }
+            i = 1;
         }).get();
         var element2 = '';
         var flag = 'checked';
@@ -1186,7 +1194,9 @@
                                         <label style="'+color+'" for="'+name+'"><i class="fas fa-check"></i></label>\
                                     </li>';
             if (flag == 'checked') {
-                $(".color-span").text(name)
+                $(".color-span").text(name);
+                var preview_color = $(e).find('div').css('background-color')
+                $("#preview-canvas-text").css('color',preview_color);
             }
             flag = '';
         }).get();
@@ -1196,6 +1206,8 @@
     });
     $("body").on("change" ,".select-color",function(){
         $(".color-span").text($(this).attr('id'))
+        var color = $(this).closest('li').find('label').css('background-color');
+        $("#preview-canvas-text").css('color',color)
     });
     $("body").on("change" ,"#select-font-preview",function(){
         var font = $(this).find(":selected").text();
@@ -1215,7 +1227,6 @@
             processData: false,
             success: function (response) {
                 if(response.status == 1) {
-                    console.log(response.path)
                     $(".image-upload-set-here").css('display','none')
                     $(".image-upload-default").css('display','block')
                     $('.image-upload-default').attr('src','{{ asset('/') }}' + response.path)
@@ -1274,9 +1285,7 @@
             });
         }
     });
-    $("body").on("change" ,".vc-input__input",function(){
-        console.log("done")
-    })
+    
     $("body").on("click" ,".edit-added-color",function(){
         $("#color-submit").css('display','none');
         $("#color-update").css('display',"")
@@ -1345,8 +1354,11 @@
             }
         });
     });
-    
+    $("body").on("keyup" ,"#line1-input",function(){
+        $("#preview-canvas-text").text($(this).val());
+    })
 </script>
+
 @endsection
 
 
